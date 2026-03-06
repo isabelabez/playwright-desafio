@@ -1,0 +1,26 @@
+servertest-ui/
+├─ tests/
+│  ├─ test_admin_products_crud.py
+│  ├─ test_client_checkout.py
+│  └─ test_signup_login_client.py
+├─ pages/
+│  ├─ base_page.py
+│  ├─ components/
+│  │  └─ navbar.py
+│  ├─ auth/
+│  │  ├─ base_login_page.py
+│  │  ├─ admin_login_page.py
+│  │  ├─ client_login_page.py
+│  │  └─ signup_page.py
+│  ├─ admin/
+│  │  └─ products_page.py
+│  ├─ client/
+│  │  ├─ products_page.py
+│  │  └─ cart_page.py
+│  └─ pages_factory.py
+├─ utils/
+│  └─ data.py
+├─ conftest.py
+├─ pytest.ini
+├─ requirements.txt
+└─ README.md
