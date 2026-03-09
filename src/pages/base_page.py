@@ -1,23 +1,18 @@
-from playwright.async_api import Page, expect
+# src/pages/base_page.py  (se já existir, garanta utilitários assim)
+from playwright.sync_api import Page
 
 class BasePage:
-    def __init__(self, page: Page, base_url: str):
-        self._page = page          # Encapsulamento: não exponha o page
-        self._base_url = base_url
+    def __init__(self, page: Page):
+        self.page = page
 
-    async def goto(self, path: str = "/"):
-        await self._page.goto(f"{self._base_url}{path}")
+    def goto(self, url: str):
+        self.page.goto(url)
 
-    async def wait_for_loaded(self):
-        # Abstração: espera genérica de carregamento
-        await self._page.wait_for_load_state("networkidle")
+    def click_by_testid(self, testid: str):
+        self.page.get_by_test_id(testid).click()
 
-    async def assert_url_contains(self, fragment: str):
-        await expect(self._page).to_have_url(lambda url: fragment in url)  # to_have_url condicional
+    def fill_by_label(self, label: str, value: str):
+        self.page.get_by_label(label).fill(value)
 
-    # Utilidades de seleção “limpas”
-    def _btn(self, name: str):
-        return self._page.get_by_role("button", name=name)
-
-    def _link(self, name: str):
-        return self._page.get_by_role("link", name=name)
+    def expect_text(self, text: str):
+        self.page.get_by_text(text).wait_for()

@@ -1,26 +1,21 @@
-from pages.base_page import BasePage
-from pages.components.navbar import NavBar
-from playwright.async_api import expect
+# src/admin/products_page.py (exemplo de assinatura dos métodos)
+from src.pages.base_page import BasePage
+from src.config import FRONT_URL
 
 class AdminProductsPage(BasePage):
-    def __init__(self, page, base_url):
-        super().__init__(page, base_url)
-        self.nav = NavBar(self._page)
+    URL = f"{FRONT_URL}/admin/produtos"
 
-    async def open_list(self):
-        await self.nav.open_menu("Listar Produtos")
-        await expect(self._page.get_by_role("heading", name="Lista de Produtos")).to_be_visible()
+    def open(self):
+        self.goto(self.URL)
 
-    async def open_create(self):
-        await self.nav.open_menu("Cadastrar Produtos")
-        await expect(self._page.get_by_role("heading", name="Cadastro de Produto")).to_be_visible()
+    def novo_produto(self, nome: str, preco: int, descricao: str, quantidade: int):
+        self.page.get_by_role("button", name="Novo").click()
+        self.fill_by_label("Nome", nome)
+        self.fill_by_label("Preço", str(preco))
+        self.fill_by_label("Descrição", descricao)
+        self.fill_by_label("Quantidade", str(quantidade))
+        self.page.get_by_role("button", name="Salvar").click()
 
-    async def add
-
-    async def delete(self, product_name: str):
-        # exemplo: clicar no botão de deletar do produto específico
-        delete_btn = self._page.get_by_role("button", name=f"Deletar {product_name}")
-        await expect(delete_btn).to_be_visible()
-        await delete_btn.click()
-        # confirmar deleção, se necessário
-        await expect(self._page.get_by_text(f"{product_name} deletado")).to_be_visible()
+    def editar_produto_primeiro(self, novo_nome: str):
+        self.page.get_by_role("button", name="Editar").first.click()
+        self.fill_by_label
