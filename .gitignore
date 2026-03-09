@@ -1,0 +1,56 @@
+# --- Python (base) ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribuição / packaging
+.build/
+dist/
+build/
+*.egg-info/
+.eggs/
+wheels/
+*.egg
+MANIFEST
+
+# Ambientes virtuais
+.venv/
+venv/
+env/
+ENV/
+.pixi/
+.pdm-build/
+.pdm-python
+
+# Ferramentas / linters / IDEs
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.tox/
+.nox/
+.idea/
+.vscode/
+.ropeproject/
+
+# Cobertura / relatórios
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Playwright (pytest-playwright)
+# Diretório padrão de artefatos (traces, screenshots, vídeos)
+test-results/
+
+# Allure (se usar)
+allure-results/
+allure-report/
+
+# SO/Editor
+.DS_Store
+Thumbs.db
+
+# Segredos / variáveis locais
+.env
+*.local
