@@ -1,20 +1,57 @@
-# Python
+# ======================================
+# PYTHON
+# ======================================
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-.env
+*.pyd
+*.pdb
+*.egg-info/
+*.log
+
+# Virtual environment
 .venv/
 venv/
+env/
+ENV/
 
-# Playwright
+# Local environment variables
+.env
+*.env
+
+# ======================================
+# PLAYWRIGHT
+# ======================================
+
+# Playwright artifacts
 playwright-report/
 test-results/
 blob-report/
+trace/
+*.zip
 
-# Logs
-*.log
+# Playwright reports gerados internamente
+**/playwright-report/
+**/test-results/
 
-# IDE
+# ======================================
+# PYTEST
+# ======================================
+.pytest_cache/
+.cache/
+
+# ======================================
+# EDITOR / IDE SETTINGS
+# ======================================
 .vscode/
 .idea/
+*.swp
+
+# ======================================
+# CONFIGURAÇÕES E ARQUIVOS QUE NÃO PRECISAM IR PRO GIT
+# ======================================
+tree.txt
+structure/
+pip/
+pytest/
