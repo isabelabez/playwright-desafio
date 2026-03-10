@@ -16,8 +16,10 @@ def test_signup_login_logout(signup_page, login_page, usuario_payload):
     login_page.open()
     login_page.login(usuario_payload["email"], usuario_payload["password"])
 
-    # Alguma asserção de que logou (ex.: saudação ou menu do usuário)
-    login_page.page.get_by_text(usuario_payload["nome"]).wait_for(timeout=5000)
+    
+# Asserção robusta de login concluído:
+login_page.assert_logado()
 
-    # Logout via UI
-    login_page.logout()
+
+# Logout via UI
+login_page.logout()
